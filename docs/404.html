@@ -1,1 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Lost in Space · Luna Game Store</title>
+  <meta name="description" content="This page drifted off into deep space. Return to Luna Game Store." />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
 
+  <style>
+    /* ═══════════════════════════════════════════════
+       LUNA GAME STORE — 404 PAGE
+       Galaxy theme · Self-contained
+       ═══════════════════════════════════════════════ */
+
+    :root {
+      --bg-deep:    #05070F;
+      --bg-mid:     #0B0E1A;
+      --surface:    #131829;
+      --luna-purple:#7B5CFF;
+      --luna-cyan:  #00D9FF;
+      --luna-pink:  #FF4D9D;
+      --text:       #FFFFFF;
+      --text-dim:   #8B92B0;
+      --font-display: 'Orbitron', 'Segoe UI', sans-serif;
+      --font-body:    'Inter', 'Segoe UI', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text);
+      font-family: var(--font-body);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* ── Animated starfield canvas ───────────────── */
+    #stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      display: block;
+    }
+
+    /* ── Nebula glow layers ──────────────────────── */
+    .nebula {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.35;
+      z-index: 1;
+      pointer-events: none;
+      animation: drift 18s ease-in-out infinite;
+    }
+
+    .nebula-1 {
+      width: 500px;
+      height: 500px;
+      background: var(--luna-purple);
+      top: -150px;
+      left: -150px;
+      animation-delay: 0s;
+    }
+
+    .nebula-2 {
+      width: 400px;
+      height: 400px;
+      background: var(--luna-cyan);
+      bottom: -120px;
+      right: -120px;
+      animation-delay: -6s;
+    }
+
+    .nebula-3 {
+      width: 300px;
+      height: 300px;
+      background: var(--luna-pink);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.15;
+      animation-delay: -12s;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50%      { transform: translate(30px, -20px) scale(1.1); }
+    }
+
+    /* ── Content wrapper ─────────────────────────── */
+    .wrapper {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      max-width: 640px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Floating moon ───────────────────────────── */
+    .moon-wrap {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-8deg); }
+      50%      { transform: translateY(-18px) rotate(-8deg); }
+    }
+
+    .moon {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%,
+        #FFFFFF 0%,
+        #E8E0FF 25%,
+        var(--luna-purple) 65%,
+        #2A1A6E 100%);
+      box-shadow:
+        0 0 60px rgba(123, 92, 255, 0.6),
+        0 0 120px rgba(0, 217, 255, 0.3),
+        inset -12px -12px 30px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+
+    .moon::after {
+      content: '';
+      position: absolute;
+      top: 22%;
+      left: 55%;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.15);
+      box-shadow:
+        -25px 30px 0 -3px rgba(0, 0, 0, 0.12),
+        10px 45px 0 -5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ── Big 404 number ──────────────────────────── */
+    .code {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 18vw, 9rem);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      background: linear-gradient(135deg,
+        var(--luna-cyan) 0%,
+        var(--luna-purple) 50%,
+        var(--luna-pink) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 30px rgba(123, 92, 255, 0.5));
+      margin-bottom: 1rem;
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% { filter: drop-shadow(0 0 30px rgba(123, 92, 255, 0.5)); }
+      50%      { filter: drop-shadow(0 0 50px rgba(0, 217, 255, 0.7)); }
+    }
+
+    /* ── Headline ────────────────────────────────── */
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--luna-cyan), var(--luna-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ── Description text ────────────────────────── */
+    p.sub {
+      color: var(--text-dim);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Button row ──────────────────────────────── */
+    .actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--luna-purple), var(--luna-cyan));
+      color: #FFFFFF;
+      box-shadow: 0 8px 30px rgba(123, 92, 255, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 14px 40px rgba(123, 92, 255, 0.7);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid rgba(123, 92, 255, 0.5);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--luna-cyan);
+      background: rgba(0, 217, 255, 0.08);
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+    }
+
+    /* ── Countdown auto-redirect ─────────────────── */
+    .redirect-note {
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .redirect-note strong {
+      color: var(--luna-cyan);
+      font-weight: 600;
+    }
+
+    /* ── Footer brand ────────────────────────────── */
+    .brand {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      z-index: 2;
+      opacity: 0.6;
+    }
+
+    /* ── Responsive tweaks ───────────────────────── */
+    @media (max-width: 480px) {
+      .moon { width: 80px; height: 80px; }
+      .actions { flex-direction: column; align-items: stretch; }
+      .btn { justify-content: center; }
+    }
+
+    /* ── Reduced motion ──────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Starfield canvas -->
+  <canvas id="stars"></canvas>
+
+  <!-- Nebula glows -->
+  <div class="nebula nebula-1"></div>
+  <div class="nebula nebula-2"></div>
+  <div class="nebula nebula-3"></div>
+
+  <!-- Main content -->
+  <div class="wrapper">
+
+    <!-- Floating moon -->
+    <div class="moon-wrap">
+      <div class="moon"></div>
+    </div>
+
+    <!-- Big 404 -->
+    <div class="code">404</div>
+
+    <!-- Headline -->
+    <h1>Lost in <span>Deep Space</span></h1>
+
+    <!-- Sub text -->
+    <p class="sub">
+      This page drifted off into the void. It may have been moved,
+      deleted, or never existed at all. Let's get you back to safety.
+    </p>
+
+    <!-- Buttons -->
+    <div class="actions">
+      <a href="/luna-website/" class="btn btn-primary">🌙 Return Home</a>
+      <a href="/luna-website/beta.html" class="btn btn-secondary">💎 Beta Info</a>
+    </div>
+
+    <!-- Auto-redirect message -->
+    <p class="redirect-note">
+      Auto-jumping home in <strong id="countdown">10</strong> seconds...
+    </p>
+
+  </div>
+
+  <!-- Footer brand -->
+  <div class="brand">🌙 Luna Game Store</div>
+
+  <script>
+    /* ═══════════════════════════════════════════════
+       STARFIELD — Animated canvas background
+       ═══════════════════════════════════════════════ */
+
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    let shootingStars = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      buildStars();
+    }
+
+    function buildStars() {
+      stars = [];
+      const count = Math.floor((canvas.width * canvas.height) / 8000);
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.5 + 0.3,
+          alpha: Math.random() * 0.7 + 0.3,
+          speed: Math.random() * 0.02 + 0.005,
+          phase: Math.random() * Math.PI * 2,
+          color: pickStarColor()
+        });
+      }
+    }
+
+    function pickStarColor() {
+      const r = Math.random();
+      if (r < 0.7) return '255, 255, 255';
+      if (r < 0.85) return '123, 92, 255';   // purple
+      return '0, 217, 255';                   // cyan
+    }
+
+    function spawnShootingStar() {
+      shootingStars.push({
+        x: Math.random() * canvas.width,
+        y: -20,
+        vx: -6 - Math.random() * 4,
+        vy: 4 + Math.random() * 3,
+        len: 100 + Math.random() * 80,
+        life: 1
+      });
+    }
+
+    function draw(now) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Twinkling stars
+      stars.forEach(s => {
+        s.phase += s.speed;
+        const twinkle = Math.sin(s.phase) * 0.4 + 0.6;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${s.color}, ${s.alpha * twinkle})`;
+        ctx.fill();
+      });
+
+      // Shooting stars
+      shootingStars = shootingStars.filter(s => s.life > 0);
+      shootingStars.forEach(s => {
+        const grad = ctx.createLinearGradient(
+          s.x, s.y,
+          s.x - s.vx * (s.len / 10), s.y - s.vy * (s.len / 10)
+        );
+        grad.addColorStop(0, `rgba(0, 217, 255, ${s.life})`);
+        grad.addColorStop(1, 'rgba(0, 217, 255, 0)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(s.x - s.vx * (s.len / 10), s.y - s.vy * (s.len / 10));
+        ctx.stroke();
+
+        s.x += s.vx;
+        s.y += s.vy;
+        s.life -= 0.012;
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    requestAnimationFrame(draw);
+
+    // Random shooting stars every 4–9 seconds
+    setInterval(() => {
+      if (Math.random() < 0.7) spawnShootingStar();
+    }, 4000);
+
+    /* ═══════════════════════════════════════════════
+       COUNTDOWN AUTO-REDIRECT
+       ═══════════════════════════════════════════════ */
+
+    let seconds = 10;
+    const countdownEl = document.getElementById('countdown');
+
+    const timer = setInterval(() => {
+      seconds--;
+      countdownEl.textContent = seconds;
+      if (seconds <= 0) {
+        clearInterval(timer);
+        window.location.href = '/luna-website/';
+      }
+    }, 1000);
+  </script>
+
+</body>
+  </html>

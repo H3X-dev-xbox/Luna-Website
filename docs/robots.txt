@@ -1,1 +1,37 @@
+# ═══════════════════════════════════════════════════════════
+# LUNA GAME STORE — robots.txt
+# https://h3x-dev-xbox.github.io/luna-website/
+# ═══════════════════════════════════════════════════════════
 
+# ─── Allow all well-behaved crawlers ──────────────────────
+User-agent: *
+Allow: /
+
+# ─── Block common junk ────────────────────────────────────
+Disallow: /assets/js/
+Disallow: /assets/fonts/
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# ─── Block aggressive SEO scrapers ────────────────────────
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# ─── Sitemap location ─────────────────────────────────────
+Sitemap: https://h3x-dev-xbox.github.io/luna-website/sitemap.xml
+
+# ═══════════════════════════════════════════════════════════
+# Thanks for crawling responsibly. 🌙
+# ═══════════════════════════════════════════════════════════

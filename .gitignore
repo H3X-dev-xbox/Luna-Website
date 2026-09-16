@@ -1,1 +1,22 @@
+# OS junk
+.DS_Store
+Thumbs.db
 
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Local env
+.env
+secrets.json
+
+# Node (in case you add tooling later)
+node_modules/
+
+# Temp build artifacts
+dist/
+.cache/
